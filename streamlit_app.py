@@ -23,9 +23,9 @@ st.write('the name on your smoothies will be: ',name_on_order)
 cnx = st.connection("snowflake")
 sessoin = cnx.session()
 # now we just want to bring back the fruit name
-my_fruit_list_df = sessoin.table('SMOOTHIES.PUBLIC.FRUIT_OPTIONS').select(col('FRUIT_NAME'),col('SEARCH_ON'))
+my_fruit_list_df = sessoin.table("SMOOTHIES.PUBLIC.FRUIT_OPTIONS").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 st.dataframe(data = my_fruit_list_df,use_container_width=True)
-
+st.stop()
 
 ingredients_list= st.multiselect(
     'Choose up to 5 ingredients: ',
