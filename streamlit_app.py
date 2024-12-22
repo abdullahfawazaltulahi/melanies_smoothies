@@ -1,6 +1,5 @@
 # Import python packages
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -18,8 +17,8 @@ st.write(
 # st.write('you selected: ',option)
 name_on_order = st.text_input('Name on Smoothies:')
 st.write('the name on your smoothies will be: ',name_on_order)
-
-sessoin = get_active_session()
+cnx = st.connection("snowflake")
+sessoin = cnx.session()
 # now we just want to bring back the fruit name
 my_fruit_list_df = sessoin.table('SMOOTHIES.PUBLIC.FRUIT_OPTIONS').select(col('FRUIT_NAME'))
 #st.dataframe(data = my_fruit_list_df,use_container_width=True);
