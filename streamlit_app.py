@@ -16,9 +16,7 @@ st.write(
 # option = st.selectbox('How would you liwk to be contacted?',('-','Email','Home Phonbe','Mobile Number'))
 # st.write('you selected: ',option)
 # new section to dispaly smoothiesfroot nutrition information
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response.json())
-sf_df = st.dataframe(data = smoothiefroot_response.json(), use_container_width = True)
+
 
 name_on_order = st.text_input('Name on Smoothies:')
 st.write('the name on your smoothies will be: ',name_on_order)
@@ -41,7 +39,9 @@ if ingredients_list:
 # a new fruit name is appended to the existing string. 
         ingredients_string += fruit_chosen+ ' '
     #st.write(ingredients_string)
-
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        #st.text(smoothiefroot_response.json())
+        sf_df = st.dataframe(data = smoothiefroot_response.json(), use_container_width = True)
     # SQL insert statement
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
                 values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
