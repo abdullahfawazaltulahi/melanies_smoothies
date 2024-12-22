@@ -38,8 +38,9 @@ if ingredients_list:
 # The += operator means "add this to what is already in the variable" so each time the FOR Loop is repeated,
 # a new fruit name is appended to the existing string. 
         ingredients_string += fruit_chosen+ ' '
+        st.subheader(fruit_chosen + 'Nutrition information')
     #st.write(ingredients_string)
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/"+ fruit_chosen)
         #st.text(smoothiefroot_response.json())
         sf_df = st.dataframe(data = smoothiefroot_response.json(), use_container_width = True)
     # SQL insert statement
